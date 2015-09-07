@@ -22,7 +22,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         selectPicture(.PhotoLibrary)
     }
     
-    override func viewDidLoad() {
+    final override func viewDidLoad() {
         super.viewDidLoad()
 
         let backButton = UIBarButtonItem()
@@ -30,9 +30,21 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         navigationItem.title = "New Meme"
+        
+        [topTextField, bottomTextField].map { $0.delegate = self }
     }
     
-    final func selectPicture(mode: UIImagePickerControllerSourceType) {
+    final override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    final override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    final private func selectPicture(mode: UIImagePickerControllerSourceType) {
         if ((mode == .Camera) && !UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             let alertView = UIAlertView(title: "Error", message: "camera not available", delegate: nil, cancelButtonTitle: "OK")
             alertView.show()
@@ -43,6 +55,35 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
             picker.delegate = self
             presentViewController(picker, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: - move keyboard
+    
+    // Credit: Udacity course notes
+    final private func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    final private func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    final func keyboardWillShow(notification: NSNotification) {
+        // only shift up the view if the bottom text view is editing
+        if bottomTextField.editing {
+            let userInfo = notification.userInfo
+            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+            let height = keyboardSize.CGRectValue().height
+            self.view.frame.origin.y -= height
+        }
+    }
+    
+    final private func keyboardWillDisappear() {
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame.origin.y = 0
+        }, completion: { flag in
+            self.view.frame.origin.y = 0
+        })
     }
 
     // MARK: - ImagePickerDelegate
@@ -55,7 +96,11 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - TextFieldDelegate
     
     final func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return true
+        dispatch_async(dispatch_get_main_queue()) {
+            self.keyboardWillDisappear()
+        }
+        textField.resignFirstResponder()
+        return false
     }
     
     /*
