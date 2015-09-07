@@ -14,34 +14,47 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
     
+    @IBAction func cameraButtonPressed(sender: AnyObject) {
+        selectPicture(.Camera)
+    }
+    
+    @IBAction func galleryButtonPressed(sender: AnyObject) {
+        selectPicture(.PhotoLibrary)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let cameraButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "selectPicture")
         let backButton = UIBarButtonItem()
         backButton.title = "Save"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         navigationItem.title = "New Meme"
-        navigationItem.backBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = cameraButton
     }
     
-    final func selectPicture() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        presentViewController(imagePickerController, animated: true, completion: nil)
+    final func selectPicture(mode: UIImagePickerControllerSourceType) {
+        if ((mode == .Camera) && !UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            let alertView = UIAlertView(title: "Error", message: "camera not available", delegate: nil, cancelButtonTitle: "OK")
+            alertView.show()
+        }
+        else {
+            let picker = UIImagePickerController()
+            picker.sourceType = mode
+            picker.delegate = self
+            presentViewController(picker, animated: true, completion: nil)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: - ImagePickerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    final func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imageView.image = image
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    // MARK: - TextFieldDelegate
+    
+    final func textFieldShouldReturn(textField: UITextField) -> Bool {
         return true
     }
     
