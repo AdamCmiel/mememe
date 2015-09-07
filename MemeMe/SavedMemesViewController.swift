@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SavedMemesViewController.swift
 //  MemeMe
 //
 //  Created by Adam Cmiel on 9/7/15.
@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SavedMemesViewControler: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createNewMeme")
+    }
+    
+    final func createNewMeme() {
+        navigationController?.performSegueWithIdentifier("showNewMemeController", sender: self)
     }
 
     override func didReceiveMemoryWarning() {

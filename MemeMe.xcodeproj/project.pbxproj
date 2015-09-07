@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		77CC3C851B9E10D20067D0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */; };
-		77CC3C871B9E10D20067D0E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C861B9E10D20067D0E4 /* ViewController.swift */; };
+		77CC3C871B9E10D20067D0E4 /* SavedMemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C861B9E10D20067D0E4 /* SavedMemesViewController.swift */; };
 		77CC3C8A1B9E10D20067D0E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CC3C881B9E10D20067D0E4 /* Main.storyboard */; };
 		77CC3C8C1B9E10D20067D0E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CC3C8B1B9E10D20067D0E4 /* Images.xcassets */; };
 		77CC3C8F1B9E10D20067D0E4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC3C8D1B9E10D20067D0E4 /* LaunchScreen.xib */; };
 		77CC3C9B1B9E10D20067D0E4 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C9A1B9E10D20067D0E4 /* MemeMeTests.swift */; };
+		77CC3CA51B9E12830067D0E4 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3CA41B9E12830067D0E4 /* Meme.swift */; };
+		77DE02381B9E1B80001F0AD2 /* NewMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DE02371B9E1B80001F0AD2 /* NewMemeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +31,15 @@
 		77CC3C7F1B9E10D20067D0E4 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC3C831B9E10D20067D0E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		77CC3C861B9E10D20067D0E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		77CC3C861B9E10D20067D0E4 /* SavedMemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMemesViewController.swift; sourceTree = "<group>"; };
 		77CC3C891B9E10D20067D0E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77CC3C8B1B9E10D20067D0E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		77CC3C8E1B9E10D20067D0E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		77CC3C941B9E10D20067D0E4 /* MemeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC3C991B9E10D20067D0E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CC3C9A1B9E10D20067D0E4 /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
+		77CC3CA41B9E12830067D0E4 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		77DE02371B9E1B80001F0AD2 /* NewMemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMemeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +82,12 @@
 			isa = PBXGroup;
 			children = (
 				77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */,
-				77CC3C861B9E10D20067D0E4 /* ViewController.swift */,
+				77DE02371B9E1B80001F0AD2 /* NewMemeViewController.swift */,
+				77CC3C861B9E10D20067D0E4 /* SavedMemesViewController.swift */,
+				77CC3CA41B9E12830067D0E4 /* Meme.swift */,
 				77CC3C881B9E10D20067D0E4 /* Main.storyboard */,
-				77CC3C8B1B9E10D20067D0E4 /* Images.xcassets */,
 				77CC3C8D1B9E10D20067D0E4 /* LaunchScreen.xib */,
+				77CC3C8B1B9E10D20067D0E4 /* Images.xcassets */,
 				77CC3C821B9E10D20067D0E4 /* Supporting Files */,
 			);
 			path = MemeMe;
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77CC3C871B9E10D20067D0E4 /* ViewController.swift in Sources */,
+				77CC3CA51B9E12830067D0E4 /* Meme.swift in Sources */,
+				77CC3C871B9E10D20067D0E4 /* SavedMemesViewController.swift in Sources */,
 				77CC3C851B9E10D20067D0E4 /* AppDelegate.swift in Sources */,
+				77DE02381B9E1B80001F0AD2 /* NewMemeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +421,7 @@
 				77CC3CA01B9E10D20067D0E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77CC3CA11B9E10D20067D0E4 /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +430,7 @@
 				77CC3CA31B9E10D20067D0E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
