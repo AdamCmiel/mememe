@@ -28,6 +28,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         let backButton = UIBarButtonItem()
         backButton.title = "Save"
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.delegate = self
         
         navigationItem.title = "New Meme"
         
@@ -103,14 +104,28 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         return false
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        
+//        let receiver = segue.destinationViewController as! SavedMemesViewControler
+//        
+//        let meme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image!, view: view)
+//        receiver.saveMeme(meme)
+//        
+//    }
+    
+    final func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        
+        if let vc = viewController as? SavedMemesViewControler {
+            if let img = imageView.image {
+                let meme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: img, view: view)
+                vc.saveMeme(meme)
+            }
+        }
     }
-    */
 
 }

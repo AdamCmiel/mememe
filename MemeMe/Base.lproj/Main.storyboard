@@ -127,15 +127,59 @@
                                     <tabBarItem image="table" id="Zm9-Hd-Y7c"/>
                                 </items>
                             </tabBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cXJ-mJ-70p">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7zz-dG-YLD">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="c3l-Oc-s9E" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tou-by-8Wy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Tou-by-8Wy" secondAttribute="bottom" constant="-8" id="KUY-mc-DCf"/>
+                                            <constraint firstItem="Tou-by-8Wy" firstAttribute="top" secondItem="c3l-Oc-s9E" secondAttribute="topMargin" constant="-8" id="WmM-Mv-lCS"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Tou-by-8Wy" secondAttribute="trailing" constant="-8" id="o4P-ZE-haH"/>
+                                            <constraint firstItem="Tou-by-8Wy" firstAttribute="leading" secondItem="c3l-Oc-s9E" secondAttribute="leadingMargin" constant="-8" id="xkE-7n-tFl"/>
+                                        </constraints>
+                                        <size key="customSize" width="120" height="120"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="Tou-by-8Wy" id="fxY-Xm-PKw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cXJ-mJ-70p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="55w-Gy-wuE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gbr-Mb-Gta" secondAttribute="bottom" id="IgU-TP-aEk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cXJ-mJ-70p" secondAttribute="trailing" constant="-16" id="LwB-fs-GBT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gbr-Mb-Gta" secondAttribute="trailing" constant="-16" id="ZE0-fN-P2J"/>
                             <constraint firstItem="gbr-Mb-Gta" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="b8K-Ay-hRl"/>
+                            <constraint firstItem="gbr-Mb-Gta" firstAttribute="top" secondItem="cXJ-mJ-70p" secondAttribute="bottom" id="syp-g5-E4a"/>
+                            <constraint firstItem="cXJ-mJ-70p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="x98-le-YDl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved Memes" id="306-qh-hhz"/>
+                    <connections>
+                        <outlet property="collectionView" destination="cXJ-mJ-70p" id="Z4i-5a-VSx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7797D09A1B9E3EF000A618CA /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797D0991B9E3EF000A618CA /* MemeCollectionViewCell.swift */; };
 		77CC3C851B9E10D20067D0E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */; };
 		77CC3C871B9E10D20067D0E4 /* SavedMemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC3C861B9E10D20067D0E4 /* SavedMemesViewController.swift */; };
 		77CC3C8A1B9E10D20067D0E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CC3C881B9E10D20067D0E4 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7797D0991B9E3EF000A618CA /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		77CC3C7F1B9E10D20067D0E4 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC3C831B9E10D20067D0E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		77CC3C811B9E10D20067D0E4 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				7797D0991B9E3EF000A618CA /* MemeCollectionViewCell.swift */,
 				77CC3C841B9E10D20067D0E4 /* AppDelegate.swift */,
 				77DE02371B9E1B80001F0AD2 /* NewMemeViewController.swift */,
 				77CC3C861B9E10D20067D0E4 /* SavedMemesViewController.swift */,
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7797D09A1B9E3EF000A618CA /* MemeCollectionViewCell.swift in Sources */,
 				77CC3CA51B9E12830067D0E4 /* Meme.swift in Sources */,
 				77CC3C871B9E10D20067D0E4 /* SavedMemesViewController.swift in Sources */,
 				77CC3C851B9E10D20067D0E4 /* AppDelegate.swift in Sources */,
