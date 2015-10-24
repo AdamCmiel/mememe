@@ -32,7 +32,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         navigationItem.title = "New Meme"
         
-        [topTextField, bottomTextField].map { $0.delegate = self }
+        [topTextField, bottomTextField].forEach { $0.delegate = self }
     }
     
     final override func viewWillAppear(animated: Bool) {
@@ -122,7 +122,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if let vc = viewController as? SavedMemesViewControler {
             if let img = imageView.image {
-                let meme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: img, view: view)
+                let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: img, view: view)
                 vc.saveMeme(meme)
             }
         }
