@@ -38,7 +38,8 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     // MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+//        return UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+        return UIEdgeInsetsZero
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -61,12 +62,19 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0.0;
+        return 0.0
     }
     
     final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0.0;
+        return 0.0
     }
     
+    final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSizeZero
+    }
+    
+    final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeZero
+    }
 }
 

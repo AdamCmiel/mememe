@@ -159,6 +159,12 @@
                                                         <constraint firstAttribute="width" constant="120" id="8U6-gp-cEy"/>
                                                         <constraint firstAttribute="height" constant="120" id="p6G-c3-H0o"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="8U6-gp-cEy"/>
+                                                            <exclude reference="p6G-c3-H0o"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
