@@ -104,6 +104,9 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.image = image
         imageView.contentMode = .ScaleAspectFill
         picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        view.bringSubviewToFront(topTextField)
+        view.bringSubviewToFront(bottomTextField)
     }
     
     // MARK: - TextFieldDelegate

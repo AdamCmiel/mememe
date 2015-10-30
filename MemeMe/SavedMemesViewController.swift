@@ -45,10 +45,6 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     
     // MARK: - UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
-    }
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("showMemeDetail", sender: self)
     }
@@ -70,6 +66,13 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let width = view.bounds.width
+        let boxWidth = width / 3
+        return CGSize(width: boxWidth, height: boxWidth)
+    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsZero

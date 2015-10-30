@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3n-5h-FWw">
-                                <rect key="frame" x="0.0" y="102" width="600" height="449"/>
-                                <animations/>
-                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-eO-kAD">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
@@ -73,16 +69,19 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w3n-5h-FWw">
+                                <rect key="frame" x="0.0" y="94" width="600" height="462"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kmK-ku-4XU" firstAttribute="leading" secondItem="4tH-iQ-4RH" secondAttribute="leadingMargin" id="0VR-0k-DHS"/>
-                            <constraint firstItem="w3n-5h-FWw" firstAttribute="leading" secondItem="4tH-iQ-4RH" secondAttribute="leadingMargin" constant="-16" id="16d-mU-0nN"/>
                             <constraint firstItem="kmK-ku-4XU" firstAttribute="top" secondItem="nPD-Qs-8Da" secondAttribute="bottom" constant="60" id="3Dy-jD-INB"/>
+                            <constraint firstItem="w3n-5h-FWw" firstAttribute="leading" secondItem="4tH-iQ-4RH" secondAttribute="leadingMargin" constant="-20" id="7VS-hR-smn"/>
                             <constraint firstItem="w3n-5h-FWw" firstAttribute="top" secondItem="nPD-Qs-8Da" secondAttribute="bottom" id="9bs-xT-CiB"/>
                             <constraint firstItem="XYV-5P-naK" firstAttribute="top" secondItem="w3n-5h-FWw" secondAttribute="bottom" constant="8" id="DeO-5H-L4V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="w3n-5h-FWw" secondAttribute="trailing" constant="-16" id="FyZ-xq-c8a"/>
                             <constraint firstItem="y5b-eO-kAD" firstAttribute="leading" secondItem="4tH-iQ-4RH" secondAttribute="leadingMargin" constant="-16" id="N95-2U-UAt"/>
                             <constraint firstItem="Zec-qv-sal" firstAttribute="trailing" secondItem="4tH-iQ-4RH" secondAttribute="trailingMargin" id="QFG-Tj-JIN"/>
                             <constraint firstItem="kmK-ku-4XU" firstAttribute="trailing" secondItem="4tH-iQ-4RH" secondAttribute="trailingMargin" id="UJP-hT-iGi"/>
@@ -91,6 +90,7 @@
                             <constraint firstItem="XYV-5P-naK" firstAttribute="top" secondItem="y5b-eO-kAD" secondAttribute="bottom" id="kEv-Dd-6eU"/>
                             <constraint firstItem="w3n-5h-FWw" firstAttribute="trailing" secondItem="4tH-iQ-4RH" secondAttribute="trailingMargin" id="kLp-t1-O2g"/>
                             <constraint firstItem="Zec-qv-sal" firstAttribute="leading" secondItem="4tH-iQ-4RH" secondAttribute="leadingMargin" id="mFE-W0-MLU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w3n-5h-FWw" secondAttribute="trailing" constant="-20" id="vug-BR-VnM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y5b-eO-kAD" secondAttribute="trailing" constant="-16" id="xSk-ke-XZu"/>
                         </constraints>
                         <variation key="default">
