@@ -105,6 +105,7 @@
                         <outlet property="bottomTextField" destination="Zec-qv-sal" id="bxf-sj-w1p"/>
                         <outlet property="cameraButton" destination="evn-WF-g2A" id="AYH-Et-5Jy"/>
                         <outlet property="imageView" destination="w3n-5h-FWw" id="dFD-ln-x84"/>
+                        <outlet property="toolbar" destination="y5b-eO-kAD" id="Bas-AI-Gxt"/>
                         <outlet property="topTextField" destination="kmK-ku-4XU" id="FMg-qe-l17"/>
                     </connections>
                 </viewController>
@@ -142,7 +143,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tou-by-8Wy">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tou-by-8Wy">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                     <animations/>
                                                     <constraints>

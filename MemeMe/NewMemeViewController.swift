@@ -14,6 +14,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         selectPicture(.Camera)
@@ -69,6 +70,22 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         presentViewController(picker, animated: true, completion: nil)
     }
     
+    // credit: http://stackoverflow.com/a/32606801
+    final private func generateMemedImage() -> UIImage {
+        
+        // remove the toolbar from the memed image
+        self.toolbar.hidden = true
+        
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.toolbar.hidden = false
+        
+        return memedImage
+    }
+    
     // MARK: - move keyboard
     
     // Credit: Udacity course notes
@@ -121,23 +138,11 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        
-//        let receiver = segue.destinationViewController as! SavedMemesViewControler
-//        
-//        let meme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image!, view: view)
-//        receiver.saveMeme(meme)
-//        
-//    }
-    
     final func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         
         if let vc = viewController as? SavedMemesViewControler {
             if let img = imageView.image {
-                let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: img, view: view)
+                let meme = Meme(image: img, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: generateMemedImage())
                 vc.saveMeme(meme)
             }
         }
