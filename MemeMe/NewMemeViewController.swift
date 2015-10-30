@@ -16,7 +16,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
     
-    var willCancel = false
+    private var shareButton: UIBarButtonItem!
     
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         selectPicture(.Camera)
@@ -28,16 +28,16 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     final override func viewDidLoad() {
         super.viewDidLoad()
-        
-        willCancel = false
 
         let backButton = UIBarButtonItem()
-        backButton.title = "Save"
+        backButton.title = "Cancel"
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel")
+        shareButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
+        
+        shareButton.enabled = false
         
         navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = shareButton
         navigationController?.delegate = self
         
         navigationItem.title = "New Meme"
@@ -94,6 +94,19 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         return memedImage
     }
     
+    final func share() {
+        // create meme
+        let meme = Meme(image: imageView.image!, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: generateMemedImage())
+        
+        // present action sheet
+        let activityViewController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true) {
+            // save meme
+            let savedMemesViewController = self.navigationController?.viewControllers.first as! SavedMemesViewControler
+            savedMemesViewController.saveMeme(meme)
+        }
+    }
+
     // MARK: - move keyboard
     
     // Credit: Udacity course notes
@@ -130,6 +143,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.contentMode = .ScaleAspectFill
         picker.dismissViewControllerAnimated(true, completion: nil)
         
+        shareButton.enabled = true
         view.bringSubviewToFront(topTextField)
         view.bringSubviewToFront(bottomTextField)
     }
@@ -147,22 +161,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - Navigation
     
     final func cancel() {
-        willCancel = true
         navigationController?.popToRootViewControllerAnimated(true)
     }
-
-    final func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        if willCancel {
-            return
-        }
-        
-        if let vc = viewController as? SavedMemesViewControler {
-            if let img = imageView.image {
-                let meme = Meme(image: img, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: generateMemedImage())
-                vc.saveMeme(meme)
-            }
-        }
-    }
-
 }
 
