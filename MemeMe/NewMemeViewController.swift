@@ -157,11 +157,5 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         textField.resignFirstResponder()
         return false
     }
-    
-    // MARK: - Navigation
-    
-    final func cancel() {
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
 }
 

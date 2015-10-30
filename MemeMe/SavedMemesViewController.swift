@@ -50,12 +50,6 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
         }
     }
     
-    // MARK: - UICollectionViewDelegate
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showMemeDetail", sender: self)
-    }
-    
     // MARK: - UICollectionViewDataSource
     
     final func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,8 +59,6 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     final func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
-//        let flooredIndex = floor(Double(indexPath.row / 10))
-//        let meme = memes![Int(flooredIndex)]
         let meme = memes![indexPath.row]
         cell.imageView.image = meme.memedImage
         cell.meme = meme

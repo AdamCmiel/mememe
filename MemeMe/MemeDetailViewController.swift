@@ -14,5 +14,11 @@ class MemeDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         memeImage.image = meme.memedImage
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        
+        navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
+    
 }

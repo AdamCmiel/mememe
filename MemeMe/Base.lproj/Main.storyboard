@@ -172,7 +172,7 @@
                                         <size key="customSize" width="120" height="120"/>
                                         <connections>
                                             <outlet property="imageView" destination="Tou-by-8Wy" id="fxY-Xm-PKw"/>
-                                            <segue destination="wXF-qx-BhM" kind="show" identifier="showMemeDetail" id="teX-R0-YfH"/>
+                                            <segue destination="wXF-qx-BhM" kind="show" identifier="showMemeDetail" id="xrl-8E-Aol"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="1184"/>
+            <point key="canvasLocation" x="590" y="1202"/>
         </scene>
         <!--Meme Detail View Controller-->
         <scene sceneID="9bQ-fX-4EB">
@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYH-jY-eMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="1195"/>
+            <point key="canvasLocation" x="1339" y="1184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XYQ-M1-wSU">
@@ -264,7 +264,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PxW-sf-Bsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="774"/>
+            <point key="canvasLocation" x="-212" y="792"/>
         </scene>
     </scenes>
     <resources>
