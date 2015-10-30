@@ -20,8 +20,11 @@ struct Meme {
         bottomText = bottom
         image = _image
         
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        // remove the toolbar from the memed image
+        let bounds = CGRect(origin: view.bounds.origin, size: CGSize(width: view.bounds.width, height: view.bounds.height - 44.0))
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
+        view.drawViewHierarchyInRect(bounds, afterScreenUpdates: true)
         memedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }

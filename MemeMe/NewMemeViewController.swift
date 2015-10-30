@@ -13,6 +13,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         selectPicture(.Camera)
@@ -32,7 +33,23 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         navigationItem.title = "New Meme"
         
-        [topTextField, bottomTextField].forEach { $0.delegate = self }
+        [topTextField, bottomTextField].forEach {
+            $0.delegate = self
+            
+            // credit: http://stackoverflow.com/a/30052126
+            $0.defaultTextAttributes = [
+                NSStrokeColorAttributeName: UIColor.blackColor(),
+                NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSStrokeWidthAttributeName: -2.5,
+                NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 50.0)!
+            ]
+            
+            $0.textAlignment = .Center
+        }
+        
+        if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            cameraButton.enabled = false
+        }
     }
     
     final override func viewWillAppear(animated: Bool) {
@@ -46,16 +63,10 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     final private func selectPicture(mode: UIImagePickerControllerSourceType) {
-        if ((mode == .Camera) && !UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            let alertView = UIAlertView(title: "Error", message: "camera not available", delegate: nil, cancelButtonTitle: "OK")
-            alertView.show()
-        }
-        else {
-            let picker = UIImagePickerController()
-            picker.sourceType = mode
-            picker.delegate = self
-            presentViewController(picker, animated: true, completion: nil)
-        }
+        let picker = UIImagePickerController()
+        picker.sourceType = mode
+        picker.delegate = self
+        presentViewController(picker, animated: true, completion: nil)
     }
     
     // MARK: - move keyboard
@@ -91,6 +102,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     final func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imageView.image = image
+        imageView.contentMode = .ScaleAspectFill
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -129,3 +141,4 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
 }
+

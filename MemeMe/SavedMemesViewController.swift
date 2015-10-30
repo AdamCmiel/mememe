@@ -5,11 +5,9 @@
 //  Created by Adam Cmiel on 9/7/15.
 //  Copyright (c) 2015 Adam Cmiel. All rights reserved.
 //
-
 import UIKit
 
 class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-
     var memes: [Meme]?
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -30,20 +28,29 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
         collectionView.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createNewMeme")
         
+        // remove shadow on navigation controller navigation item
+        navigationController!.view.backgroundColor = UIColor.whiteColor()
+        
         if memes == nil {
             memes = []
         }
     }
     
-    // MARK: - UICollectionViewDelegate
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-        return UIEdgeInsetsZero
+    final override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMemeDetail" {
+            let detailViewController = segue.destinationViewController as! MemeDetailViewController
+            detailViewController.meme = memes![0]
+        }
     }
+    
+    // MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 80, height: 80)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showMemeDetail", sender: self)
     }
     
     // MARK: - UICollectionViewDataSource
@@ -58,7 +65,14 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
         let flooredIndex = floor(Double(indexPath.row / 10))
         let meme = memes![Int(flooredIndex)]
         cell.imageView.image = meme.memedImage
+        cell.meme = meme
         return cell
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsZero
     }
     
     final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
