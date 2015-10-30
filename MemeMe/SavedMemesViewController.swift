@@ -103,5 +103,38 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     final func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSizeZero
     }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailViewController: MemeDetailViewController = MemeDetailViewController()
+        detailViewController.meme = memes![0]
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memes!.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let _cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as? MemeTableViewCell
+        
+        var cell: MemeTableViewCell
+        if _cell == nil {
+            tableView.registerNib(UINib(nibName: "MemeTableViewCell", bundle: nil), forCellReuseIdentifier: "tableCell")
+            cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as! MemeTableViewCell
+        }
+        else {
+            cell = _cell!
+        }
+        
+        let meme = memes![indexPath.row]
+        cell.memeImageView.image = meme.memedImage
+        cell.memeTextLabel.text = meme.topText + " " + meme.bottomText
+        cell.meme = meme
+        return cell
+    }
 }
 
