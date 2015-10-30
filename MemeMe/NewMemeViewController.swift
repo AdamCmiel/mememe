@@ -16,6 +16,8 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
     
+    var willCancel = false
+    
     @IBAction func cameraButtonPressed(sender: AnyObject) {
         selectPicture(.Camera)
     }
@@ -26,10 +28,16 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     final override func viewDidLoad() {
         super.viewDidLoad()
+        
+        willCancel = false
 
         let backButton = UIBarButtonItem()
         backButton.title = "Save"
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel")
+        
+        navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = cancelButton
         navigationController?.delegate = self
         
         navigationItem.title = "New Meme"
@@ -137,8 +145,16 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     // MARK: - Navigation
+    
+    final func cancel() {
+        willCancel = true
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
 
     final func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if willCancel {
+            return
+        }
         
         if let vc = viewController as? SavedMemesViewControler {
             if let img = imageView.image {

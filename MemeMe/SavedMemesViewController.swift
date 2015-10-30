@@ -17,7 +17,12 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
  
     final func saveMeme(meme: Meme) {
         memes?.append(meme)
+        reload()
+    }
+    
+    final func reload() {
         collectionView.reloadData()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - UIViewController
@@ -34,6 +39,8 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
         if memes == nil {
             memes = []
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     final override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -70,7 +77,17 @@ class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLay
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let width = view.bounds.width
-        let boxWidth = width / 3
+        var boxWidth: CGFloat
+        
+        switch UIApplication.sharedApplication().statusBarOrientation {
+        case .Portrait:
+            fallthrough
+        case .PortraitUpsideDown:
+            boxWidth = floor(width / 3)
+        default:
+            boxWidth = floor(width / 5) - 1.0
+        }
+        
         return CGSize(width: boxWidth, height: boxWidth)
     }
     
