@@ -102,7 +102,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         let activityViewController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         presentViewController(activityViewController, animated: true) {
             // save meme
-            let savedMemesViewController = self.navigationController?.viewControllers.first as! SavedMemesViewControler
+            let savedMemesViewController = self.navigationController?.viewControllers.first as! MemeTabBarController
             savedMemesViewController.saveMeme(meme)
         }
     }
