@@ -11,10 +11,10 @@ import UIKit
 class SavedMemesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var memes: [Meme] {
-        get { return self.root.memes }
+        get { return root.memes }
     }
     var root: MemeTabBarController {
-        get { return self.navigationController!.viewControllers.first as! MemeTabBarController }
+        get { return navigationController!.viewControllers.first as! MemeTabBarController }
         
     }
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +22,7 @@ class SavedMemesTableViewController: UIViewController, UITableViewDelegate, UITa
     final func reload() {
         tableView.reloadData()
     }
-    
+   
     // MARK: - UIViewController
     
     final override func viewDidLoad() {

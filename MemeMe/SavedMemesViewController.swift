@@ -10,10 +10,10 @@ import UIKit
 class SavedMemesViewControler: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     var memes: [Meme] {
-        get { return self.root.memes }
+        get { return root.memes }
     }
     var root: MemeTabBarController {
-        get { return self.navigationController!.viewControllers.first as! MemeTabBarController }
+        get { return navigationController!.viewControllers.first as! MemeTabBarController }
         
     }
     @IBOutlet weak var collectionView: UICollectionView!

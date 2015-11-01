@@ -82,14 +82,14 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     final private func generateMemedImage() -> UIImage {
         
         // remove the toolbar from the memed image
-        self.toolbar.hidden = true
+        toolbar.hidden = true
         
         UIGraphicsBeginImageContext(view.bounds.size)
         view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let memedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.toolbar.hidden = false
+        toolbar.hidden = false
         
         return memedImage
     }
@@ -124,7 +124,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
             let userInfo = notification.userInfo
             let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
             let height = keyboardSize.CGRectValue().height
-            self.view.frame.origin.y -= height
+            view.frame.origin.y -= height
         }
     }
     
