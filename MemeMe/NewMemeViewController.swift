@@ -144,9 +144,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.dismissViewControllerAnimated(true, completion: nil)
         
         shareButton.enabled = true
-        view.bringSubviewToFront(toolbar)
-        view.bringSubviewToFront(topTextField)
-        view.bringSubviewToFront(bottomTextField)
+        view.sendSubviewToBack(imageView)
     }
     
     // MARK: - TextFieldDelegate
